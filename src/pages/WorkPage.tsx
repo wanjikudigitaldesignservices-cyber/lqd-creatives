@@ -119,6 +119,7 @@ export default function WorkPage() {
               </div>
             </motion.a>
           ))}
+        </div>
       </div>
     </div>
   )
