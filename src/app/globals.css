@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-page: #080e1e;
+    --bg-surface: #0e1833;
+    --bg-elevated: #152247;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-accent: rgba(212, 175, 55, 0.3);
+    
+    --gold-primary: #d4af37;
+    --gold-light: #e6c86e;
+    --gold-dark: #b38f26;
+
+    --navy-dark: #080e1e;
+    --navy-base: #0e1833;
+    --navy-card: #132042;
+    --navy-light: #1c2e5e;
+
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background-color: #d4af37;
+    color: #080e1e;
+  }
+}
+
+/* Custom utility classes */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #fef08a 0%, #d4af37 50%, #b38f26 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border {
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.gold-glow {
+  box-shadow: 0 0 25px -5px rgba(212, 175, 55, 0.15);
+}
+
+.navy-card {
+  background-color: #0e1833;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: all 0.2s ease-in-out;
+}
+
+.navy-card:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Form controls */
+input, select, textarea {
+  color-scheme: dark;
+}
