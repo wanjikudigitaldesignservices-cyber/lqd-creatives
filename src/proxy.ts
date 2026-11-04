@@ -15,14 +15,24 @@ export default function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Detect subdomains (e.g. admin.lqdcreatives.vercel.app, blog.lqdcreatives.vercel.app)
+  // Detect subdomains:
+  // Supports both custom domain subdomains (admin.lqdcreatives.co.ke, blog.lqdcreatives.co.ke)
+  // and Vercel aliases (lqd-creatives-admin.vercel.app, admin-lqd-creatives.vercel.app, etc.)
   const isCmsSubdomain =
     hostname.startsWith("admin.") ||
-    hostname.startsWith("cms.");
+    hostname.startsWith("cms.") ||
+    hostname.startsWith("admin-") ||
+    hostname.startsWith("cms-") ||
+    hostname.includes("-admin.") ||
+    hostname.includes("-cms.");
 
   const isBlogSubdomain =
     hostname.startsWith("blog.") ||
-    hostname.startsWith("insights.");
+    hostname.startsWith("insights.") ||
+    hostname.startsWith("blog-") ||
+    hostname.startsWith("insights-") ||
+    hostname.includes("-blog.") ||
+    hostname.includes("-insights.");
 
   // 1. CMS Subdomain Handling
   if (isCmsSubdomain) {
