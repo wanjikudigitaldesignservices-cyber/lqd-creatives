@@ -187,3 +187,31 @@ export async function setupFirstAdminAction(formData: FormData): Promise<AuthAct
     message: "Primary administrator account registered successfully! You may now sign in.",
   };
 }
+
+export async function updatePasswordAction(newPassword: string): Promise<AuthActionResult> {
+  if (!newPassword || newPassword.length < 8) {
+    return {
+      success: false,
+      message: "Password must be at least 8 characters long.",
+    };
+  }
+
+  try {
+    const supabase = await createClient();
+    const { error } = await supabase.auth.updateUser({ password: newPassword });
+
+    if (error) {
+      return { success: false, message: error.message };
+    }
+
+    return {
+      success: true,
+      message: "Password changed successfully! Keep your new password safe.",
+    };
+  } catch (err: unknown) {
+    return {
+      success: false,
+      message: err instanceof Error ? err.message : "Failed to update password",
+    };
+  }
+}
