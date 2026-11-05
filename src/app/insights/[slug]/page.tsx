@@ -1,11 +1,22 @@
-import { createClient } from "@/lib/supabase/server";
+import { publicSupabase } from "@/lib/supabase/public";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Clock, User, ArrowRight, Share2 } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 import { LqdPost } from "@/lib/types/database";
 
-export const revalidate = 60;
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  const { data: posts } = await publicSupabase
+    .from("lqd_posts")
+    .select("slug")
+    .eq("published", true);
+
+  return (posts || []).map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 interface PostPageProps {
   params: Promise<{ slug: string }>;
@@ -13,8 +24,7 @@ interface PostPageProps {
 
 export async function generateMetadata({ params }: PostPageProps) {
   const { slug } = await params;
-  const supabase = await createClient();
-  const { data: post } = await supabase
+  const { data: post } = await publicSupabase
     .from("lqd_posts")
     .select("title, excerpt")
     .eq("slug", slug)
@@ -30,9 +40,8 @@ export async function generateMetadata({ params }: PostPageProps) {
 
 export default async function PostDetailPage({ params }: PostPageProps) {
   const { slug } = await params;
-  const supabase = await createClient();
 
-  const { data: post } = await supabase
+  const { data: post } = await publicSupabase
     .from("lqd_posts")
     .select("*, category:lqd_categories(name)")
     .eq("slug", slug)

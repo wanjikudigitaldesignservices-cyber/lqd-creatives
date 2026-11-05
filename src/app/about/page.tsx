@@ -59,7 +59,7 @@ export default function AboutPage() {
               </div>
               <h4 className="text-base font-bold text-white">Mobile-First for Kenya</h4>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Over 80% of your Kenyan visitors use mobile phones. We optimize every asset, font, and interaction for instant loading on local Safaricom and Airtel data connections.
+                Over 80% of your Kenyan visitors use mobile phones. We optimize every asset, font, and interaction for instant loading across local cellular networks and 3G/4G/5G connections.
               </p>
             </div>
 
@@ -84,7 +84,7 @@ export default function AboutPage() {
           </div>
 
           <p className="text-sm text-slate-300 leading-relaxed">
-            Reuben brings deep hands-on expertise in modern web systems, TypeScript, React/Next.js architectures, and local payment integration (Safaricom Daraja M-Pesa). His focus is delivering enterprise-grade engineering rigor to early-stage and growing Kenyan businesses.
+            Reuben brings deep hands-on expertise in modern web systems, TypeScript, React/Next.js architectures, and digital product design. His focus is delivering enterprise-grade engineering rigor to early-stage and growing Kenyan businesses.
           </p>
 
           <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-semibold">

@@ -1,10 +1,21 @@
-import { createClient } from "@/lib/supabase/server";
+import { publicSupabase } from "@/lib/supabase/public";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, CheckCircle, ArrowRight, Layers } from "lucide-react";
 import { LqdProject } from "@/lib/types/database";
 
-export const revalidate = 60;
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  const { data: projects } = await publicSupabase
+    .from("lqd_projects")
+    .select("slug")
+    .eq("published", true);
+
+  return (projects || []).map((project) => ({
+    slug: project.slug,
+  }));
+}
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -12,8 +23,7 @@ interface ProjectPageProps {
 
 export async function generateMetadata({ params }: ProjectPageProps) {
   const { slug } = await params;
-  const supabase = await createClient();
-  const { data: project } = await supabase
+  const { data: project } = await publicSupabase
     .from("lqd_projects")
     .select("title, summary")
     .eq("slug", slug)
@@ -29,9 +39,8 @@ export async function generateMetadata({ params }: ProjectPageProps) {
 
 export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   const { slug } = await params;
-  const supabase = await createClient();
 
-  const { data: project } = await supabase
+  const { data: project } = await publicSupabase
     .from("lqd_projects")
     .select("*")
     .eq("slug", slug)

@@ -56,8 +56,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/services/business-automation-integrations" className="hover:text-white transition-colors">
-                  M-Pesa & SME Automation
+                <Link href="/work" className="hover:text-white transition-colors">
+                  Selected Work & Concepts
                 </Link>
               </li>
               <li>

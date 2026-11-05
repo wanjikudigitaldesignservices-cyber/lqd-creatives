@@ -1,18 +1,17 @@
 import Link from "next/link";
-import { createClient } from "@/lib/supabase/server";
+import { publicSupabase } from "@/lib/supabase/public";
 import { LqdService } from "@/lib/types/database";
 import { ArrowRight, CheckCircle, ShieldCheck, Zap, Layers, Sparkles } from "lucide-react";
 
 export const metadata = {
   title: "Services & Capabilities",
-  description: "Web design, full-stack development, brand identity, and practical SME automation for growing Kenyan businesses.",
+  description: "Web design, full-stack development, and brand identity design for growing Kenyan businesses.",
 };
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default async function ServicesPage() {
-  const supabase = await createClient();
-  const { data: services } = await supabase
+  const { data: services } = await publicSupabase
     .from("lqd_services")
     .select("*")
     .eq("published", true)
@@ -32,7 +31,7 @@ export default async function ServicesPage() {
             Services & Solutions for Kenyan Enterprises
           </h1>
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-            We lead with website design and development, supported by brand identity and practical business automation. Every project is scoped transparently based on your actual business objectives.
+            We lead with website design and development, supported by brand identity and graphic design. Every project is scoped transparently based on your actual business objectives.
           </p>
         </div>
 

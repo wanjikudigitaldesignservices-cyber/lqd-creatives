@@ -255,7 +255,6 @@ export function ProjectsClient({ initialProjects, isAdmin }: ProjectsClientProps
                   >
                     <option value="web_platform">Web Platform</option>
                     <option value="sme_website">SME Website</option>
-                    <option value="automation">Automation</option>
                     <option value="branding">Branding</option>
                   </select>
                 </div>

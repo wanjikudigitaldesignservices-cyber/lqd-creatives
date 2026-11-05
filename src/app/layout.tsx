@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "Nairobi web developer",
     "Kenyan SME websites",
     "Full-stack development Kenya",
-    "M-Pesa web integration",
+    "Brand identity design Nairobi",
     "LQD Creatives",
     "Reuben Wanjiku Kimani",
     "Mobile-friendly websites Nairobi",

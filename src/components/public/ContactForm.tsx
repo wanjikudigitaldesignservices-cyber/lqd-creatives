@@ -265,7 +265,6 @@ export function ContactForm({ defaultService = "Website Design & Full-Stack Deve
               >
                 <option value="Website Design & Full-Stack Development">Flagship: Web Design & Development</option>
                 <option value="Brand Identity & Graphic Design for Digital">Brand Identity & Graphic Design</option>
-                <option value="Practical Business Automation & Local Integrations">SME Automation & M-Pesa Integration</option>
                 <option value="Complete Website + Branding Package">Full Website + Branding Package</option>
               </select>
             </div>

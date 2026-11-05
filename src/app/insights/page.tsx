@@ -1,19 +1,18 @@
 import Link from "next/link";
-import { createClient } from "@/lib/supabase/server";
+import { publicSupabase } from "@/lib/supabase/public";
 import { LqdPost } from "@/lib/types/database";
 import { formatDate } from "@/lib/utils";
 import { Clock, ArrowRight, User } from "lucide-react";
 
 export const metadata = {
   title: "Insights & Strategy for Kenyan SMEs",
-  description: "Practical guides on web design costs, mobile optimization, M-Pesa integration, and digital growth for Kenyan businesses.",
+  description: "Practical guides on web design costs, mobile optimization, conversion strategy, and digital growth for Kenyan businesses.",
 };
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default async function InsightsPage() {
-  const supabase = await createClient();
-  const { data: posts } = await supabase
+  const { data: posts } = await publicSupabase
     .from("lqd_posts")
     .select("*, category:lqd_categories(name)")
     .eq("published", true)
@@ -33,7 +32,7 @@ export default async function InsightsPage() {
             Digital Strategy for Kenyan Businesses
           </h1>
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-            Practical, evidence-based articles explaining website pricing, conversion pitfalls, M-Pesa payment workflows, and mobile optimization in the East African market.
+            Practical, evidence-based articles explaining website pricing, conversion pitfalls, and mobile optimization in the East African market.
           </p>
         </div>
 

@@ -249,7 +249,6 @@ export function ServicesClient({ initialServices, isAdmin }: ServicesClientProps
                   >
                     <option value="web_development">Web Development</option>
                     <option value="brand_identity">Brand Identity</option>
-                    <option value="automation_systems">SME Automation</option>
                   </select>
                 </div>
                 <div>

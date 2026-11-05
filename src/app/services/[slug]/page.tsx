@@ -1,11 +1,22 @@
-import { createClient } from "@/lib/supabase/server";
+import { publicSupabase } from "@/lib/supabase/public";
 import { notFound } from "next/navigation";
 import { ContactForm } from "@/components/public/ContactForm";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle, HelpCircle, ArrowRight, ShieldCheck } from "lucide-react";
 import { LqdService } from "@/lib/types/database";
 
-export const revalidate = 60;
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  const { data: services } = await publicSupabase
+    .from("lqd_services")
+    .select("slug")
+    .eq("published", true);
+
+  return (services || []).map((service) => ({
+    slug: service.slug,
+  }));
+}
 
 interface ServicePageProps {
   params: Promise<{ slug: string }>;
@@ -13,8 +24,7 @@ interface ServicePageProps {
 
 export async function generateMetadata({ params }: ServicePageProps) {
   const { slug } = await params;
-  const supabase = await createClient();
-  const { data: service } = await supabase
+  const { data: service } = await publicSupabase
     .from("lqd_services")
     .select("title, excerpt")
     .eq("slug", slug)
@@ -30,9 +40,8 @@ export async function generateMetadata({ params }: ServicePageProps) {
 
 export default async function ServiceDetailPage({ params }: ServicePageProps) {
   const { slug } = await params;
-  const supabase = await createClient();
 
-  const { data: service } = await supabase
+  const { data: service } = await publicSupabase
     .from("lqd_services")
     .select("*")
     .eq("slug", slug)

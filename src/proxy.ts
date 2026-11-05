@@ -17,14 +17,15 @@ export default function proxy(request: NextRequest) {
 
   // Detect subdomains:
   // Supports both custom domain subdomains (admin.lqdcreatives.co.ke, blog.lqdcreatives.co.ke)
-  // and Vercel aliases (lqd-creatives-admin.vercel.app, admin-lqd-creatives.vercel.app, etc.)
+  // and Vercel aliases (lqd-creatives-admin, lqdcreatives-blog, etc.)
   const isCmsSubdomain =
     hostname.startsWith("admin.") ||
     hostname.startsWith("cms.") ||
     hostname.startsWith("admin-") ||
     hostname.startsWith("cms-") ||
     hostname.includes("-admin.") ||
-    hostname.includes("-cms.");
+    hostname.includes("-cms.") ||
+    hostname.includes("lqdcreatives-admin.");
 
   const isBlogSubdomain =
     hostname.startsWith("blog.") ||
@@ -32,15 +33,34 @@ export default function proxy(request: NextRequest) {
     hostname.startsWith("blog-") ||
     hostname.startsWith("insights-") ||
     hostname.includes("-blog.") ||
-    hostname.includes("-insights.");
+    hostname.includes("-insights.") ||
+    hostname.startsWith("lqdblog.") ||
+    hostname.includes("lqdcreatives-blog.");
+
+  // Top-level public routes that should NOT be rewritten to /insights/ or /admin/
+  const PUBLIC_TOP_ROUTES = [
+    "/about",
+    "/services",
+    "/work",
+    "/contact",
+    "/privacy",
+    "/terms",
+    "/admin",
+  ];
+
+  const isPublicTopRoute = PUBLIC_TOP_ROUTES.some(
+    (route) => pathname === route || pathname.startsWith(`${route}/`)
+  );
 
   // 1. CMS Subdomain Handling
   if (isCmsSubdomain) {
-    // e.g. admin.domain.com/ -> /admin
-    // e.g. admin.domain.com/leads -> /admin/leads
-    // e.g. admin.domain.com/posts -> /admin/posts
-    if (!pathname.startsWith("/admin")) {
-      url.pathname = `/admin${pathname === "/" ? "" : pathname}`;
+    if (pathname === "/") {
+      url.pathname = "/admin";
+      return NextResponse.rewrite(url);
+    }
+    // If not starting with /admin and not a public top route, rewrite to /admin/...
+    if (!pathname.startsWith("/admin") && !isPublicTopRoute) {
+      url.pathname = `/admin${pathname}`;
       return NextResponse.rewrite(url);
     }
     return NextResponse.next();
@@ -49,18 +69,31 @@ export default function proxy(request: NextRequest) {
   // 2. Blog Subdomain Handling
   if (isBlogSubdomain) {
     // Quick writer shortcut for daily/weekly blogs
-    if (pathname === "/write" || pathname === "/admin" || pathname === "/create") {
+    if (pathname === "/write" || pathname === "/create") {
       url.pathname = "/admin/posts";
       return NextResponse.rewrite(url);
     }
 
-    // e.g. blog.domain.com/ -> /insights
-    // e.g. blog.domain.com/how-much-does-a-website-cost -> /insights/how-much-does-a-website-cost
-    if (!pathname.startsWith("/insights")) {
-      url.pathname = `/insights${pathname === "/" ? "" : pathname}`;
+    // Root of blog subdomain -> /insights
+    if (pathname === "/") {
+      url.pathname = "/insights";
       return NextResponse.rewrite(url);
     }
-    return NextResponse.next();
+
+    // If navigating to main site pages (e.g. /about, /services, /work, /contact),
+    // serve them normally without appending /insights/ (prevents 404!)
+    if (isPublicTopRoute) {
+      return NextResponse.next();
+    }
+
+    // If URL already has /insights/..., serve directly
+    if (pathname.startsWith("/insights")) {
+      return NextResponse.next();
+    }
+
+    // Otherwise rewrite direct article slug: blog.domain.com/[slug] -> /insights/[slug]
+    url.pathname = `/insights${pathname}`;
+    return NextResponse.rewrite(url);
   }
 
   return NextResponse.next();

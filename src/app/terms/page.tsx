@@ -22,7 +22,7 @@ export default function TermsPage() {
         <section className="space-y-3">
           <h2 className="text-xl font-bold text-white">1. Scope of Work & Proposals</h2>
           <p>
-            All website design, development, branding, and automation projects are governed by an itemized written scope proposal. Any additional features, integrations, or pages requested after proposal approval are quoted separately as change orders.
+            All website design, development, and branding projects are governed by an itemized written scope proposal. Any additional features, integrations, or pages requested after proposal approval are quoted separately as change orders.
           </p>
         </section>
 

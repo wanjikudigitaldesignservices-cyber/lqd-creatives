@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { createClient } from "@/lib/supabase/server";
+import { publicSupabase } from "@/lib/supabase/public";
 import { LqdProject } from "@/lib/types/database";
 import { ArrowRight, ExternalLink, Layers } from "lucide-react";
 
@@ -8,11 +8,10 @@ export const metadata = {
   description: "Curated web applications, SME websites, and digital prototypes engineered by LQD Creatives.",
 };
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default async function WorkPage() {
-  const supabase = await createClient();
-  const { data: projects } = await supabase
+  const { data: projects } = await publicSupabase
     .from("lqd_projects")
     .select("*")
     .eq("published", true)

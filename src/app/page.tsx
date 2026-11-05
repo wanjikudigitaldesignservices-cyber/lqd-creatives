@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { createClient } from "@/lib/supabase/server";
+import { publicSupabase } from "@/lib/supabase/public";
 import { ContactForm } from "@/components/public/ContactForm";
 import { 
   ArrowRight, 
@@ -17,26 +17,24 @@ import {
 } from "lucide-react";
 import { LqdService, LqdProject, LqdFaq } from "@/lib/types/database";
 
-// Revalidate published content every 60 seconds (ISR)
-export const revalidate = 60;
+// High-speed Edge ISR caching
+export const revalidate = 3600;
 
 export default async function HomePage() {
-  const supabase = await createClient();
-
-  // Fetch published services, projects, and FAQs
+  // Fetch published services, projects, and FAQs using zero-cookie public client
   const [servicesRes, projectsRes, faqsRes] = await Promise.all([
-    supabase
+    publicSupabase
       .from("lqd_services")
       .select("*")
       .eq("published", true)
       .order("display_order", { ascending: true }),
-    supabase
+    publicSupabase
       .from("lqd_projects")
       .select("*")
       .eq("published", true)
       .order("display_order", { ascending: true })
       .limit(3),
-    supabase
+    publicSupabase
       .from("lqd_faqs")
       .select("*")
       .eq("published", true)
@@ -104,6 +102,28 @@ export default async function HomePage() {
               <span className="hidden sm:flex items-center gap-1.5">
                 <CheckCircle className="w-3.5 h-3.5 text-[#25d366]" /> Direct WhatsApp Coordination
               </span>
+            </div>
+          </div>
+
+          {/* Hero Studio Office Showcase (Clean, modern aesthetic, zero people) */}
+          <div className="mt-12 sm:mt-16 relative max-w-5xl mx-auto">
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-[#d4af37]/10 group">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#080e1e] via-transparent to-transparent z-10 opacity-70" />
+              <img
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80"
+                alt="Modern digital design studio workspace in Nairobi"
+                className="w-full h-[280px] sm:h-[420px] lg:h-[480px] object-cover object-center transform group-hover:scale-[1.02] transition-transform duration-700"
+                loading="eager"
+              />
+              <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 z-20 flex flex-wrap items-center gap-2 sm:gap-3">
+                <span className="px-3.5 py-1.5 rounded-full bg-[#080e1e]/90 border border-white/15 text-[11px] font-semibold text-white backdrop-blur-md flex items-center gap-2 shadow-lg">
+                  <span className="w-2 h-2 rounded-full bg-[#25d366]" />
+                  LQD Creatives Studio • Nairobi
+                </span>
+                <span className="px-3.5 py-1.5 rounded-full bg-[#080e1e]/80 border border-[#d4af37]/30 text-[11px] font-semibold text-[#d4af37] backdrop-blur-md hidden sm:inline-flex">
+                  Dedicated Web Engineering & Digital Design
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -226,8 +246,8 @@ export default async function HomePage() {
                     <div className="flex gap-3">
                       <div className="w-6 h-6 rounded-full bg-[#d4af37]/20 text-[#d4af37] flex items-center justify-center shrink-0 font-bold">1</div>
                       <div>
-                        <strong className="text-white block text-sm mb-0.5">Safaricom & Airtel Optimized</strong>
-                        Pages load in under 1.2 seconds, ensuring you do not lose mobile visitors on slow network connections.
+                        <strong className="text-white block text-sm mb-0.5">Mobile Network Optimized</strong>
+                        Pages load in under 1 second, ensuring you do not lose mobile visitors on fluctuating cellular data networks.
                       </div>
                     </div>
                     <div className="flex gap-3">
@@ -264,7 +284,7 @@ export default async function HomePage() {
                 Supporting Services
               </h2>
               <p className="text-sm text-slate-400 mt-2">
-                While website engineering is our flagship discipline, we offer targeted branding and automation add-ons to ensure your web presence operates at peak efficiency.
+                While website engineering is our flagship discipline, we offer targeted brand identity and graphic design to ensure your web presence looks authoritative and cohesive.
               </p>
             </div>
 
