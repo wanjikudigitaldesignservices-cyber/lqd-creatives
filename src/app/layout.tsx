@@ -1,8 +1,24 @@
 import type { Metadata } from "next";
+import Script from "next/script";
+import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/public/Header";
 import { Footer } from "@/components/public/Footer";
 import { WhatsAppButton } from "@/components/public/WhatsAppButton";
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-serif",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -42,6 +58,15 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/icon.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -50,14 +75,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full scroll-smooth">
+    <html lang="en" className={`h-full scroll-smooth ${plusJakartaSans.variable} ${playfairDisplay.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap"
-          rel="stylesheet"
-        />
         {/* Structured Data: Organization & ProfessionalService */}
         <script
           type="application/ld+json"
@@ -85,6 +104,34 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-[#080e1e] text-slate-100 antialiased selection:bg-[#d4af37] selection:text-[#080e1e]">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-KG7HHG3J"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+            title="Google Tag Manager"
+          />
+        </noscript>
+
+        <Script
+          id="gtm-loader"
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-KG7HHG3J"
+        />
+        <Script
+          id="gtm-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+            `,
+          }}
+        />
+
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { loginAction } from "@/app/actions/auth-actions";
 import { Lock, Mail, ArrowRight, Loader2, AlertCircle } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState("");
@@ -41,8 +42,8 @@ export default function AdminLoginPage() {
         <div className="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 bg-[#d4af37]/10 rounded-full blur-2xl pointer-events-none" />
 
         <div className="text-center space-y-2 mb-8">
-          <div className="w-12 h-12 rounded-xl bg-[#132042] border border-[#d4af37]/40 text-[#d4af37] flex items-center justify-center mx-auto mb-3 font-bold text-xl">
-            LQ
+          <div className="relative w-14 h-14 rounded-2xl overflow-hidden border border-white/20 bg-[#0e1833] mx-auto mb-3 shadow-lg">
+            <Image src="/images/logo.webp" alt="LQD Creatives logo" fill sizes="56px" className="object-cover" />
           </div>
           <h1 className="text-2xl font-bold text-white tracking-tight">CMS Administration</h1>
           <p className="text-xs text-slate-400">

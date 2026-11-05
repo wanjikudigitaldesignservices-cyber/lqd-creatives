@@ -58,10 +58,11 @@ export default async function WorkPage() {
                         href={proj.live_url}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={`View live website for ${proj.title} (opens in new tab)`}
                         className="absolute top-3 right-3 px-3 py-1.5 rounded-lg bg-[#080e1e]/85 backdrop-blur-md border border-white/20 text-[11px] font-semibold text-[#d4af37] hover:bg-[#d4af37] hover:text-[#080e1e] transition-all flex items-center gap-1.5 shadow-lg"
                       >
                         <span>Live Site</span>
-                        <ExternalLink className="w-3 h-3" />
+                        <ExternalLink className="w-3 h-3" aria-hidden="true" />
                       </a>
                     )}
                   </div>
@@ -120,10 +121,11 @@ export default async function WorkPage() {
                     href={proj.live_url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Launch ${proj.title} website in new tab`}
                     className="text-xs text-slate-300 hover:text-white flex items-center gap-1 px-3 py-1 rounded bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
                   >
                     <span>Launch</span>
-                    <ExternalLink className="w-3 h-3" />
+                    <ExternalLink className="w-3 h-3" aria-hidden="true" />
                   </a>
                 )}
               </div>

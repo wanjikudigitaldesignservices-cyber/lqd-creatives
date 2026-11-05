@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { MessageSquare, Menu, X, ArrowRight, ShieldCheck } from "lucide-react";
 
 export function Header() {
@@ -22,8 +23,15 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg bg-[#0e1833] border border-[#d4af37]/40 flex items-center justify-center font-bold text-[#d4af37] text-lg tracking-wider group-hover:border-[#d4af37] transition-colors">
-              LQ
+            <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-white/15 bg-[#0e1833] shadow-md group-hover:border-[#d4af37]/60 group-hover:shadow-[0_0_15px_rgba(212,175,55,0.25)] transition-all">
+              <Image
+                src="/images/logo.webp"
+                alt="LQD Creatives logo"
+                fill
+                sizes="40px"
+                className="object-cover"
+                priority
+              />
             </div>
             <div className="flex flex-col">
               <span className="text-white font-bold tracking-tight text-lg">

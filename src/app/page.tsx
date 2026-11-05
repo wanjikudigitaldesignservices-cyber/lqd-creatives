@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { publicSupabase } from "@/lib/supabase/public";
 import { ContactForm } from "@/components/public/ContactForm";
 import { 
@@ -56,11 +57,15 @@ export default async function HomePage() {
       <section className="relative pt-20 pb-24 md:pt-28 md:pb-32 overflow-hidden flex items-center min-h-[640px] lg:min-h-[740px]">
         {/* Background Image: Crystal Clear Modern Architectural Studio (Zero people, crisp, high-res) */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none">
-          <img
-            src="/images/hero-office.jpg"
+          <Image
+            src="/images/hero-office.webp"
             alt="LQD Creatives modern digital studio workspace"
+            fill
+            priority
+            fetchPriority="high"
+            sizes="100vw"
+            quality={80}
             className="w-full h-full object-cover object-center filter brightness-[0.88] contrast-[1.05]"
-            loading="eager"
           />
           {/* Subtle translucent tint that preserves full image clarity while softly blending edges */}
           <div className="absolute inset-0 bg-[#080e1e]/35" />
@@ -140,7 +145,7 @@ export default async function HomePage() {
             <div className="rounded-2xl bg-[#0e1833] border border-white/10 overflow-hidden flex flex-col justify-between card-hover-effect group">
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
                 <img
-                  src="/images/sectors/professional.jpg"
+                  src="/images/sectors/professional.webp"
                   alt="Kenyan professional corporate practices and law firms"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
@@ -170,7 +175,7 @@ export default async function HomePage() {
             <div className="rounded-2xl bg-[#0e1833] border border-white/10 overflow-hidden flex flex-col justify-between card-hover-effect group">
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
                 <img
-                  src="/images/sectors/healthcare.jpg"
+                  src="/images/sectors/healthcare.webp"
                   alt="Medical clinics and private healthcare facilities in Kenya"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
@@ -200,7 +205,7 @@ export default async function HomePage() {
             <div className="rounded-2xl bg-[#0e1833] border border-white/10 overflow-hidden flex flex-col justify-between card-hover-effect group">
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
                 <img
-                  src="/images/sectors/logistics.jpg"
+                  src="/images/sectors/logistics.webp"
                   alt="East African freight logistics and transport operations"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
@@ -230,7 +235,7 @@ export default async function HomePage() {
             <div className="rounded-2xl bg-[#0e1833] border border-white/10 overflow-hidden flex flex-col justify-between card-hover-effect group">
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
                 <img
-                  src="/images/sectors/agriculture.jpg"
+                  src="/images/sectors/agriculture.webp"
                   alt="Kenyan agricultural suppliers and commercial distributors"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
@@ -260,7 +265,7 @@ export default async function HomePage() {
             <div className="rounded-2xl bg-[#0e1833] border border-white/10 overflow-hidden flex flex-col justify-between card-hover-effect group">
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
                 <img
-                  src="/images/sectors/retail.jpg"
+                  src="/images/sectors/retail.webp"
                   alt="Modern retail boutiques and Kenyan consumer merchants"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
@@ -290,7 +295,7 @@ export default async function HomePage() {
             <div className="rounded-2xl bg-[#0e1833] border border-white/10 overflow-hidden flex flex-col justify-between card-hover-effect group">
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
                 <img
-                  src="/images/sectors/hospitality.jpg"
+                  src="/images/sectors/hospitality.webp"
                   alt="Kenyan boutique safari lodges, retreats, and hotels"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
@@ -339,9 +344,9 @@ export default async function HomePage() {
                   </p>
 
                   <div className="space-y-3 pt-2">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                    <p className="text-xs font-bold uppercase tracking-wider text-slate-300">
                       Standard Deliverables Included:
-                    </h4>
+                    </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                       {flagshipService.deliverables.slice(0, 6).map((del, idx) => (
                         <div key={idx} className="flex items-start gap-2 text-sm text-slate-200">
@@ -443,9 +448,9 @@ export default async function HomePage() {
 
                   {/* Key Deliverables Cards */}
                   <div className="space-y-3 pt-2">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                    <p className="text-xs font-bold uppercase tracking-wider text-slate-300">
                       Key Deliverables Included:
-                    </h4>
+                    </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                       <div className="p-4 rounded-xl bg-[#080e1e]/90 border border-white/10 space-y-1.5 hover:border-[#d4af37]/40 transition-colors">
                         <div className="flex items-center gap-2 text-white font-semibold text-sm">
@@ -511,7 +516,7 @@ export default async function HomePage() {
                 <div className="lg:col-span-5 space-y-5">
                   <div className="relative rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-slate-950 group">
                     <img
-                      src="/images/brand-identity-showcase.jpg"
+                      src="/images/brand-identity-showcase.webp"
                       alt="Brand identity guidelines, stationery lockups, and digital visual tokens"
                       className="w-full h-64 sm:h-72 object-cover object-center group-hover:scale-105 transition-transform duration-700"
                       loading="lazy"
@@ -617,10 +622,11 @@ export default async function HomePage() {
                           href={proj.live_url}
                           target="_blank"
                           rel="noopener noreferrer"
+                          aria-label={`View live website for ${proj.title} (opens in new tab)`}
                           className="absolute top-3 right-3 px-3 py-1.5 rounded-lg bg-[#080e1e]/85 backdrop-blur-md border border-white/20 text-[11px] font-semibold text-[#d4af37] hover:bg-[#d4af37] hover:text-[#080e1e] transition-all flex items-center gap-1.5 shadow-lg"
                         >
                           <span>Live Site</span>
-                          <ExternalLink className="w-3 h-3" />
+                          <ExternalLink className="w-3 h-3" aria-hidden="true" />
                         </a>
                       )}
                     </div>
@@ -678,10 +684,11 @@ export default async function HomePage() {
                       href={proj.live_url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`Launch ${proj.title} website in new tab`}
                       className="text-xs text-slate-300 hover:text-white flex items-center gap-1 px-3 py-1 rounded bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
                     >
                       <span>Launch</span>
-                      <ExternalLink className="w-3 h-3" />
+                      <ExternalLink className="w-3 h-3" aria-hidden="true" />
                     </a>
                   )}
                 </div>
@@ -708,7 +715,7 @@ export default async function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="p-7 rounded-2xl bg-[#0e1833] border border-white/10 relative card-hover-effect group">
-              <span className="text-4xl font-extrabold text-[#d4af37]/25 absolute top-5 right-5 group-hover:text-[#d4af37]/60 transition-colors">01</span>
+              <span aria-hidden="true" className="text-4xl font-extrabold text-[#d4af37]/40 select-none absolute top-5 right-5 group-hover:text-[#d4af37]/75 transition-colors">01</span>
               <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#d4af37] transition-colors">1. Discover & Scope</h3>
               <p className="text-xs text-slate-300 leading-relaxed">
                 We define your primary business objective, ideal Kenyan customer profile, and required pages. You get a clear, itemized proposal before paying a single shilling.
@@ -716,7 +723,7 @@ export default async function HomePage() {
             </div>
 
             <div className="p-7 rounded-2xl bg-[#0e1833] border border-white/10 relative card-hover-effect group">
-              <span className="text-4xl font-extrabold text-[#d4af37]/25 absolute top-5 right-5 group-hover:text-[#d4af37]/60 transition-colors">02</span>
+              <span aria-hidden="true" className="text-4xl font-extrabold text-[#d4af37]/40 select-none absolute top-5 right-5 group-hover:text-[#d4af37]/75 transition-colors">02</span>
               <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#d4af37] transition-colors">2. Wireframe & Plan</h3>
               <p className="text-xs text-slate-300 leading-relaxed">
                 We plan the visual hierarchy and customer journey, ensuring your services are immediately understood and your contact mechanisms are front and center.
@@ -724,7 +731,7 @@ export default async function HomePage() {
             </div>
 
             <div className="p-7 rounded-2xl bg-[#0e1833] border border-white/10 relative card-hover-effect group">
-              <span className="text-4xl font-extrabold text-[#d4af37]/25 absolute top-5 right-5 group-hover:text-[#d4af37]/60 transition-colors">03</span>
+              <span aria-hidden="true" className="text-4xl font-extrabold text-[#d4af37]/40 select-none absolute top-5 right-5 group-hover:text-[#d4af37]/75 transition-colors">03</span>
               <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#d4af37] transition-colors">3. Engineered Build</h3>
               <p className="text-xs text-slate-300 leading-relaxed">
                 We engineer your site using modern Next.js and Supabase. We implement mobile responsiveness, secure forms, WhatsApp linking, and database persistence.
@@ -732,7 +739,7 @@ export default async function HomePage() {
             </div>
 
             <div className="p-7 rounded-2xl bg-[#0e1833] border border-white/10 relative card-hover-effect group">
-              <span className="text-4xl font-extrabold text-[#d4af37]/25 absolute top-5 right-5 group-hover:text-[#d4af37]/60 transition-colors">04</span>
+              <span aria-hidden="true" className="text-4xl font-extrabold text-[#d4af37]/40 select-none absolute top-5 right-5 group-hover:text-[#d4af37]/75 transition-colors">04</span>
               <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#d4af37] transition-colors">4. Launch & Handover</h3>
               <p className="text-xs text-slate-300 leading-relaxed">
                 We map your domain (.co.ke or .com), test across real mobile devices, train you on your CMS dashboard, and hand over 100% of your source code and assets.
@@ -795,7 +802,7 @@ export default async function HomePage() {
               </div>
 
               <div className="p-6 rounded-2xl bg-[#0e1833] border border-white/10 space-y-4">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-white">Direct Communication</h4>
+                <p className="text-xs font-bold uppercase tracking-wider text-white">Direct Communication</p>
                 <div className="space-y-3 text-sm text-slate-300">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-lg bg-[#25d366]/20 text-[#25d366] flex items-center justify-center">

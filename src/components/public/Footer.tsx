@@ -1,18 +1,25 @@
 import Link from "next/link";
+import Image from "next/image";
 import { MessageSquare, Mail, Phone, MapPin, ArrowUpRight, Lock } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#050914] text-slate-400 border-t border-white/10 pt-16 pb-12">
+    <footer className="bg-[#050914] text-slate-300 border-t border-white/10 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-[#0e1833] border border-[#d4af37]/40 flex items-center justify-center font-bold text-[#d4af37] text-base">
-                LQ
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="relative w-9 h-9 rounded-xl overflow-hidden border border-white/15 bg-[#0e1833] shadow-md group-hover:border-[#d4af37]/60 transition-all">
+                <Image
+                  src="/images/logo.webp"
+                  alt="LQD Creatives logo"
+                  fill
+                  sizes="36px"
+                  className="object-cover"
+                />
               </div>
               <span className="text-white font-bold tracking-tight text-xl">
                 LQD <span className="text-[#d4af37]">Creatives</span>
@@ -143,7 +150,7 @@ export function Footer() {
               <li className="pt-2">
                 <Link
                   href="/admin"
-                  className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-300 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition-colors"
                 >
                   <Lock className="w-3 h-3" />
                   <span>CMS Portal</span>
@@ -154,16 +161,16 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 gap-4">
           <p>© {currentYear} LQD Creatives. All rights reserved. Handcrafted in Nairobi, Kenya.</p>
           <div className="flex items-center gap-6">
-            <Link href="/privacy" className="hover:text-slate-400 transition-colors">
+            <Link href="/privacy" className="text-slate-400 hover:text-white transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-slate-400 transition-colors">
+            <Link href="/terms" className="text-slate-400 hover:text-white transition-colors">
               Terms of Engagement
             </Link>
-            <span className="text-slate-600">Kenya DPA 2019 Compliant</span>
+            <span className="text-slate-400">Kenya DPA 2019 Compliant</span>
           </div>
         </div>
       </div>

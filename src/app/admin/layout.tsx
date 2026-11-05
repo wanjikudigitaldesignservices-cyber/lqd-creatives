@@ -1,5 +1,6 @@
 import { getCurrentUserRole, logoutAction } from "@/app/actions/auth-actions";
 import Link from "next/link";
+import Image from "next/image";
 import { 
   Inbox, 
   Layers, 
@@ -42,8 +43,8 @@ export default async function AdminLayout({
       <aside className="w-full md:w-64 bg-[#0a1226] border-r border-white/10 flex flex-col shrink-0">
         <div className="p-6 border-b border-white/10 flex items-center justify-between">
           <Link href="/admin" className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#0e1833] border border-[#d4af37]/40 flex items-center justify-center font-bold text-[#d4af37] text-sm">
-              LQ
+            <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-white/20 bg-[#0e1833] shrink-0">
+              <Image src="/images/logo.webp" alt="LQD logo" fill sizes="32px" className="object-cover" />
             </div>
             <div>
               <span className="font-bold text-white text-sm block">LQD Studio CMS</span>

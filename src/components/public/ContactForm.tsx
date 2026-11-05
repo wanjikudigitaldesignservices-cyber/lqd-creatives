@@ -208,7 +208,7 @@ export function ContactForm({ defaultService = "Website Design & Full-Stack Deve
 
             <div>
               <label htmlFor="businessName" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                Business / Entity Name <span className="text-slate-500 text-[10px]">(Optional)</span>
+                Business / Entity Name <span className="text-slate-400 text-[10px]">(Optional)</span>
               </label>
               <input
                 id="businessName"
@@ -239,7 +239,7 @@ export function ContactForm({ defaultService = "Website Design & Full-Stack Deve
 
             <div>
               <label htmlFor="email" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                Email Address <span className="text-slate-500 text-[10px]">(Optional if phone is provided)</span>
+                Email Address <span className="text-slate-400 text-[10px]">(Optional if phone is provided)</span>
               </label>
               <input
                 id="email"
@@ -271,7 +271,7 @@ export function ContactForm({ defaultService = "Website Design & Full-Stack Deve
 
             <div>
               <label htmlFor="budgetRange" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                Estimated Budget <span className="text-slate-500 text-[10px]">(Optional)</span>
+                Estimated Budget <span className="text-slate-400 text-[10px]">(Optional)</span>
               </label>
               <select
                 id="budgetRange"
@@ -290,7 +290,7 @@ export function ContactForm({ defaultService = "Website Design & Full-Stack Deve
 
             <div>
               <label htmlFor="desiredTimeline" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                Desired Timeline <span className="text-slate-500 text-[10px]">(Optional)</span>
+                Desired Timeline <span className="text-slate-400 text-[10px]">(Optional)</span>
               </label>
               <select
                 id="desiredTimeline"
@@ -359,7 +359,7 @@ export function ContactForm({ defaultService = "Website Design & Full-Stack Deve
               )}
             </button>
 
-            <span className="text-xs text-slate-500">or</span>
+            <span className="text-xs text-slate-400">or</span>
 
             <a
               href="https://wa.me/254740396075?text=Hi%20Reuben,%20I%20would%20like%20to%20discuss%20a%20website%20project%20for%20my%20business."
