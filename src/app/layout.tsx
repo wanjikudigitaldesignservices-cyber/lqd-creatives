@@ -23,11 +23,11 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Reuben Wanjiku Kimani" }],
   creator: "LQD Creatives",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://lqdcreatives.vercel.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://lqd-creatives.vercel.app"),
   openGraph: {
     type: "website",
     locale: "en_KE",
-    url: "https://lqdcreatives.vercel.app",
+    url: "https://lqd-creatives.vercel.app",
     title: "LQD Creatives | High-Converting Websites for Kenyan SMEs",
     description:
       "Modern, fast, mobile-first websites engineered to build trust and generate qualified enquiries for growing Kenyan enterprises.",
@@ -66,7 +66,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
               "name": "LQD Creatives",
-              "url": "https://lqdcreatives.vercel.app",
+              "url": "https://lqd-creatives.vercel.app",
               "telephone": "+254-740-396-075",
               "email": "lqdcreatives@gmail.com",
               "address": {

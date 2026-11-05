@@ -22,7 +22,7 @@ export default function PrivacyPolicyPage() {
         <section className="space-y-3">
           <h2 className="text-xl font-bold text-white">1. Introduction</h2>
           <p>
-            LQD Creatives (&quot;we&quot;, &quot;our&quot;, &quot;us&quot;) operates the website located at https://lqdcreatives.vercel.app and related communications. We respect the privacy of our visitors and clients and comply with the Kenya Data Protection Act (2019).
+            LQD Creatives (&quot;we&quot;, &quot;our&quot;, &quot;us&quot;) operates the website located at https://lqd-creatives.vercel.app and related communications. We respect the privacy of our visitors and clients and comply with the Kenya Data Protection Act (2019).
           </p>
         </section>
 
