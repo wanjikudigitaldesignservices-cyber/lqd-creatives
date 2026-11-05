@@ -40,7 +40,7 @@ export default async function WorkPage() {
           {projectList.map((proj) => (
             <div
               key={proj.id}
-              className="rounded-2xl bg-[#0e1833] border border-white/10 overflow-hidden flex flex-col justify-between hover:border-[#d4af37]/50 transition-all group shadow-xl"
+              className="rounded-2xl bg-[#0e1833] border border-white/10 overflow-hidden flex flex-col justify-between card-hover-effect group shadow-xl"
             >
               <div>
                 {/* Real Homepage Screenshot Preview */}

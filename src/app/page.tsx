@@ -13,7 +13,9 @@ import {
   Clock, 
   Zap, 
   HelpCircle,
-  ExternalLink
+  ExternalLink,
+  ShoppingBag,
+  Compass
 } from "lucide-react";
 import { LqdService, LqdProject, LqdFaq } from "@/lib/types/database";
 
@@ -119,13 +121,13 @@ export default async function HomePage() {
       </section>
 
       {/* 2. TRUST SECTION: Who We Serve (Honest, No fake logos) */}
-      <section className="py-16 bg-[#060b17] border-y border-white/10">
+      <section className="py-20 bg-[#060b17] border-y border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto text-center mb-10">
+          <div className="max-w-2xl mx-auto text-center mb-14">
             <span className="text-xs font-semibold uppercase tracking-wider text-[#d4af37]">
               Purpose-Built For Growing Enterprises
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-1">
               Engineered for the reality of Kenyan commerce
             </h2>
             <p className="text-sm text-slate-400 mt-2">
@@ -133,45 +135,185 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded-xl bg-[#0e1833] border border-white/10 space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-[#142247] border border-[#d4af37]/30 flex items-center justify-center text-[#d4af37]">
-                <ShieldCheck className="w-5 h-5" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+            {/* 1. Professional Services */}
+            <div className="rounded-2xl bg-[#0e1833] border border-white/10 overflow-hidden flex flex-col justify-between card-hover-effect group">
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
+                <img
+                  src="/images/sectors/professional.jpg"
+                  alt="Kenyan professional corporate practices and law firms"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0e1833] via-[#0e1833]/40 to-transparent" />
+                <div className="absolute top-3 left-3 w-9 h-9 rounded-lg bg-[#080e1e]/85 backdrop-blur-md border border-[#d4af37]/40 flex items-center justify-center text-[#d4af37] shadow-md">
+                  <ShieldCheck className="w-4 h-4" />
+                </div>
               </div>
-              <h3 className="text-base font-bold text-white">Professional Services</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Law firms, audit consultancies, and engineering practices that need an authoritative digital presence to win corporate tenders and private clients.
-              </p>
+              <div className="p-6 pt-3 space-y-2 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-lg font-bold text-white group-hover:text-[#d4af37] transition-colors">
+                    Professional Services & Legal
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed mt-1.5">
+                    Law firms, audit consultancies, and engineering practices that need an authoritative digital presence to win corporate tenders and private clients.
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-[#d4af37]">
+                  <span>Credential & Profile Architecture</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
             </div>
 
-            <div className="p-6 rounded-xl bg-[#0e1833] border border-white/10 space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-[#142247] border border-[#d4af37]/30 flex items-center justify-center text-[#d4af37]">
-                <Zap className="w-5 h-5" />
+            {/* 2. Clinics & Healthcare */}
+            <div className="rounded-2xl bg-[#0e1833] border border-white/10 overflow-hidden flex flex-col justify-between card-hover-effect group">
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
+                <img
+                  src="/images/sectors/healthcare.jpg"
+                  alt="Medical clinics and private healthcare facilities in Kenya"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0e1833] via-[#0e1833]/40 to-transparent" />
+                <div className="absolute top-3 left-3 w-9 h-9 rounded-lg bg-[#080e1e]/85 backdrop-blur-md border border-[#d4af37]/40 flex items-center justify-center text-[#d4af37] shadow-md">
+                  <Zap className="w-4 h-4" />
+                </div>
               </div>
-              <h3 className="text-base font-bold text-white">Clinics & Healthcare</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Private medical practices, physiotherapy clinics, and wellness centres requiring clear specialist profiles and friction-free booking pathways.
-              </p>
+              <div className="p-6 pt-3 space-y-2 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-lg font-bold text-white group-hover:text-[#d4af37] transition-colors">
+                    Clinics & Healthcare Practices
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed mt-1.5">
+                    Private medical practices, physiotherapy clinics, and wellness centres requiring clear specialist profiles and friction-free booking pathways.
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-[#d4af37]">
+                  <span>Doctor Directory & Direct Triage</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
             </div>
 
-            <div className="p-6 rounded-xl bg-[#0e1833] border border-white/10 space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-[#142247] border border-[#d4af37]/30 flex items-center justify-center text-[#d4af37]">
-                <Layers className="w-5 h-5" />
+            {/* 3. Transport & Logistics */}
+            <div className="rounded-2xl bg-[#0e1833] border border-white/10 overflow-hidden flex flex-col justify-between card-hover-effect group">
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
+                <img
+                  src="/images/sectors/logistics.jpg"
+                  alt="East African freight logistics and transport operations"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0e1833] via-[#0e1833]/40 to-transparent" />
+                <div className="absolute top-3 left-3 w-9 h-9 rounded-lg bg-[#080e1e]/85 backdrop-blur-md border border-[#d4af37]/40 flex items-center justify-center text-[#d4af37] shadow-md">
+                  <Layers className="w-4 h-4" />
+                </div>
               </div>
-              <h3 className="text-base font-bold text-white">Transport & Logistics</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                East African freight, cargo haulage, and clearing firms that need instant quotation requests and fleet capability showcases.
-              </p>
+              <div className="p-6 pt-3 space-y-2 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-lg font-bold text-white group-hover:text-[#d4af37] transition-colors">
+                    Transport & Logistics
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed mt-1.5">
+                    East African freight, cargo haulage, and clearing firms that need instant quotation requests and fleet capability showcases.
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-[#d4af37]">
+                  <span>Instant Rate & Route Quoting</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
             </div>
 
-            <div className="p-6 rounded-xl bg-[#0e1833] border border-white/10 space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-[#142247] border border-[#d4af37]/30 flex items-center justify-center text-[#d4af37]">
-                <Cpu className="w-5 h-5" />
+            {/* 4. Agri & Commercial Suppliers */}
+            <div className="rounded-2xl bg-[#0e1833] border border-white/10 overflow-hidden flex flex-col justify-between card-hover-effect group">
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
+                <img
+                  src="/images/sectors/agriculture.jpg"
+                  alt="Kenyan agricultural suppliers and commercial distributors"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0e1833] via-[#0e1833]/40 to-transparent" />
+                <div className="absolute top-3 left-3 w-9 h-9 rounded-lg bg-[#080e1e]/85 backdrop-blur-md border border-[#d4af37]/40 flex items-center justify-center text-[#d4af37] shadow-md">
+                  <Cpu className="w-4 h-4" />
+                </div>
               </div>
-              <h3 className="text-base font-bold text-white">Agri & Commercial Suppliers</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Agricultural distributors and wholesale suppliers needing low-bandwidth, fast-loading digital catalogues for field buyers.
-              </p>
+              <div className="p-6 pt-3 space-y-2 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-lg font-bold text-white group-hover:text-[#d4af37] transition-colors">
+                    Agri & Commercial Suppliers
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed mt-1.5">
+                    Agricultural distributors and wholesale suppliers needing low-bandwidth, fast-loading digital catalogues for field buyers.
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-[#d4af37]">
+                  <span>Low-Bandwidth Mobile Catalogues</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            </div>
+
+            {/* 5. Retail Stores & Modern Brands */}
+            <div className="rounded-2xl bg-[#0e1833] border border-white/10 overflow-hidden flex flex-col justify-between card-hover-effect group">
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
+                <img
+                  src="/images/sectors/retail.jpg"
+                  alt="Modern retail boutiques and Kenyan consumer merchants"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0e1833] via-[#0e1833]/40 to-transparent" />
+                <div className="absolute top-3 left-3 w-9 h-9 rounded-lg bg-[#080e1e]/85 backdrop-blur-md border border-[#d4af37]/40 flex items-center justify-center text-[#d4af37] shadow-md">
+                  <ShoppingBag className="w-4 h-4" />
+                </div>
+              </div>
+              <div className="p-6 pt-3 space-y-2 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-lg font-bold text-white group-hover:text-[#d4af37] transition-colors">
+                    Retail Stores & Modern Brands
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed mt-1.5">
+                    Boutique shops, electronics stores, and merchandise retailers needing direct WhatsApp ordering pathways and live inventory catalogues.
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-[#d4af37]">
+                  <span>Direct WhatsApp Ordering Flow</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            </div>
+
+            {/* 6. Hospitality, Lodges & Retreats */}
+            <div className="rounded-2xl bg-[#0e1833] border border-white/10 overflow-hidden flex flex-col justify-between card-hover-effect group">
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
+                <img
+                  src="/images/sectors/hospitality.jpg"
+                  alt="Kenyan boutique safari lodges, retreats, and hotels"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0e1833] via-[#0e1833]/40 to-transparent" />
+                <div className="absolute top-3 left-3 w-9 h-9 rounded-lg bg-[#080e1e]/85 backdrop-blur-md border border-[#d4af37]/40 flex items-center justify-center text-[#d4af37] shadow-md">
+                  <Compass className="w-4 h-4" />
+                </div>
+              </div>
+              <div className="p-6 pt-3 space-y-2 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-lg font-bold text-white group-hover:text-[#d4af37] transition-colors">
+                    Hospitality, Lodges & Retreats
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed mt-1.5">
+                    Boutique hotels, countryside retreats, and safari operators looking to increase direct reservations and eliminate third-party commission overhead.
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-[#d4af37]">
+                  <span>Direct Guest Booking Flow</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -261,64 +403,169 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* 4. SUPPORTING SERVICES */}
+      {/* 4. SUPPORTING SERVICE: Brand Identity & Graphic Design (EXPANSIVE FULL-WIDTH BENTO SHOWCASE) */}
       {supportingServices.length > 0 && (
-        <section className="py-20 bg-[#060b17] border-t border-white/10">
+        <section className="py-24 bg-[#060b17] border-t border-white/10 relative overflow-hidden">
+          {/* Subtle Ambient Light */}
+          <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-[#d4af37]/5 rounded-full blur-[140px] pointer-events-none" />
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl mx-auto text-center mb-12">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#d4af37]">
-                Complementary Capabilities
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-1">
-                Supporting Services
+            <div className="max-w-3xl mb-12">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#d4af37]/15 border border-[#d4af37]/40 text-xs font-bold text-[#d4af37] uppercase tracking-wider mb-3">
+                <span className="w-2 h-2 rounded-full bg-[#d4af37] animate-pulse" />
+                Supporting Service Discipline
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+                Brand Identity & Graphic Design for Digital
               </h2>
-              <p className="text-sm text-slate-400 mt-2">
-                While website engineering is our flagship discipline, we offer targeted brand identity and graphic design to ensure your web presence looks authoritative and cohesive.
+              <p className="text-base sm:text-lg text-slate-300 mt-3 leading-relaxed">
+                Digital-first visual identities that look authoritative on smartphone screens, proposals, and social platforms.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {supportingServices.map((service) => (
-                <div
-                  key={service.id}
-                  className="p-8 rounded-2xl bg-[#0e1833] border border-white/10 hover:border-[#d4af37]/40 transition-all flex flex-col justify-between"
-                >
+            {/* FULL-WIDTH EXPANSIVE BENTO SHOWCASE FILLING ENTIRE SPACE */}
+            <div className="w-full rounded-3xl bg-gradient-to-br from-[#0e1833] via-[#101c3d] to-[#080e1e] border border-[#d4af37]/35 overflow-hidden shadow-2xl relative card-hover-effect">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center p-8 sm:p-12 lg:p-14">
+                
+                {/* Left 7 Columns: Value Proposition, Deliverables & Actions */}
+                <div className="lg:col-span-7 space-y-8">
                   <div className="space-y-4">
-                    <span className="text-xs font-semibold text-[#d4af37] uppercase tracking-wider">
-                      {service.category.replace("_", " ")}
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#d4af37]">
+                      Digital-First Brand Architecture
                     </span>
-                    <h3 className="text-2xl font-bold text-white">{service.title}</h3>
-                    <p className="text-sm text-slate-300 leading-relaxed">{service.excerpt}</p>
-                    <div className="space-y-2 pt-2">
-                      <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Key Deliverables:</p>
-                      <ul className="space-y-1.5 text-xs text-slate-300">
-                        {service.deliverables.slice(0, 4).map((d, i) => (
-                          <li key={i} className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37]" />
-                            {d}
-                          </li>
-                        ))}
-                      </ul>
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
+                      Visual Systems Built for Mobile Authority & Corporate Trust
+                    </h3>
+                    <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+                      A website converts better when your brand looks established, cohesive, and intentional. We build rigorous visual identity guidelines that ensure your business looks authoritative whether viewed as a tiny mobile favicon, a corporate tender document, or a sponsored social campaign.
+                    </p>
+                  </div>
+
+                  {/* Key Deliverables Cards */}
+                  <div className="space-y-3 pt-2">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                      Key Deliverables Included:
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                      <div className="p-4 rounded-xl bg-[#080e1e]/90 border border-white/10 space-y-1.5 hover:border-[#d4af37]/40 transition-colors">
+                        <div className="flex items-center gap-2 text-white font-semibold text-sm">
+                          <CheckCircle className="w-4 h-4 text-[#d4af37] shrink-0" />
+                          <span>Vector Logo Lockups</span>
+                        </div>
+                        <p className="text-xs text-slate-400 pl-6 leading-relaxed">
+                          Vector primary & secondary logo lockups (SVG, PNG, PDF) with dark & light mode adaptations for web headers and print.
+                        </p>
+                      </div>
+
+                      <div className="p-4 rounded-xl bg-[#080e1e]/90 border border-white/10 space-y-1.5 hover:border-[#d4af37]/40 transition-colors">
+                        <div className="flex items-center gap-2 text-white font-semibold text-sm">
+                          <CheckCircle className="w-4 h-4 text-[#d4af37] shrink-0" />
+                          <span>Typography Hierarchy</span>
+                        </div>
+                        <p className="text-xs text-slate-400 pl-6 leading-relaxed">
+                          Defined typography hierarchy and web font pairings optimized for sub-second rendering across Kenyan mobile connections.
+                        </p>
+                      </div>
+
+                      <div className="p-4 rounded-xl bg-[#080e1e]/90 border border-white/10 space-y-1.5 hover:border-[#d4af37]/40 transition-colors">
+                        <div className="flex items-center gap-2 text-white font-semibold text-sm">
+                          <CheckCircle className="w-4 h-4 text-[#d4af37] shrink-0" />
+                          <span>Digital Color Tokens</span>
+                        </div>
+                        <p className="text-xs text-slate-400 pl-6 leading-relaxed">
+                          Curated brand color palette with exact digital tokens (HEX, RGB, CSS variables) engineered for high WCAG contrast.
+                        </p>
+                      </div>
+
+                      <div className="p-4 rounded-xl bg-[#080e1e]/90 border border-white/10 space-y-1.5 hover:border-[#d4af37]/40 transition-colors">
+                        <div className="flex items-center gap-2 text-white font-semibold text-sm">
+                          <CheckCircle className="w-4 h-4 text-[#d4af37] shrink-0" />
+                          <span>Social & Proposal Assets</span>
+                        </div>
+                        <p className="text-xs text-slate-400 pl-6 leading-relaxed">
+                          Digital profile assets, standardized pitch title banners, and reusable branding guidelines for your team.
+                        </p>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="pt-6 border-t border-white/10 mt-6 flex items-center justify-between">
+                  {/* Actions */}
+                  <div className="pt-4 flex flex-col sm:flex-row items-center gap-4 border-t border-white/10">
                     <Link
-                      href={`/services/${service.slug}`}
-                      className="text-xs text-[#d4af37] font-semibold hover:underline flex items-center gap-1"
+                      href="/services/brand-identity-design"
+                      className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-[#d4af37] text-[#080e1e] font-bold text-sm hover:bg-[#e6c86e] transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#d4af37]/20"
                     >
                       <span>Explore Scope & Details</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <ArrowRight className="w-4 h-4" />
                     </Link>
                     <Link
                       href="/contact"
-                      className="px-3.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-medium text-slate-200 hover:bg-white/10"
+                      className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-white/5 border border-white/20 text-slate-200 font-semibold text-sm hover:bg-white/10 hover:border-white/40 transition-all flex items-center justify-center gap-2"
                     >
-                      Inquire
+                      <span>Inquire About Branding</span>
                     </Link>
                   </div>
                 </div>
-              ))}
+
+                {/* Right 5 Columns: Editorial Visual Photography & Tokens Specimen */}
+                <div className="lg:col-span-5 space-y-5">
+                  <div className="relative rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-slate-950 group">
+                    <img
+                      src="/images/brand-identity-showcase.jpg"
+                      alt="Brand identity guidelines, stationery lockups, and digital visual tokens"
+                      className="w-full h-64 sm:h-72 object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#080e1e] via-[#080e1e]/30 to-transparent" />
+                    <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-[#080e1e]/85 backdrop-blur-md border border-[#d4af37]/40 text-[11px] font-semibold text-[#d4af37] shadow-lg">
+                      Digital Identity System
+                    </div>
+                  </div>
+
+                  {/* Interactive Digital Tokens Specimen Card */}
+                  <div className="p-5 rounded-2xl bg-[#080e1e]/90 border border-white/10 space-y-3 backdrop-blur-md shadow-xl">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                        Design Tokens Specimen
+                      </span>
+                      <span className="text-[10px] text-emerald-400 font-mono">
+                        WCAG AAA Compliant
+                      </span>
+                    </div>
+
+                    {/* Color Chips */}
+                    <div className="grid grid-cols-4 gap-2">
+                      <div className="p-2 rounded-lg bg-[#0e1833] border border-white/15 text-center">
+                        <div className="w-full h-6 rounded bg-[#080e1e] border border-white/20 mb-1" />
+                        <span className="block text-[9px] font-mono text-slate-300">#080E1E</span>
+                        <span className="block text-[8px] text-slate-400 uppercase">Obsidian</span>
+                      </div>
+                      <div className="p-2 rounded-lg bg-[#0e1833] border border-white/15 text-center">
+                        <div className="w-full h-6 rounded bg-[#d4af37] mb-1 shadow-sm" />
+                        <span className="block text-[9px] font-mono text-[#d4af37]">#D4AF37</span>
+                        <span className="block text-[8px] text-slate-300 uppercase">Gold Primary</span>
+                      </div>
+                      <div className="p-2 rounded-lg bg-[#0e1833] border border-white/15 text-center">
+                        <div className="w-full h-6 rounded bg-[#0e1833] border border-white/20 mb-1" />
+                        <span className="block text-[9px] font-mono text-slate-300">#0E1833</span>
+                        <span className="block text-[8px] text-slate-400 uppercase">Navy Surface</span>
+                      </div>
+                      <div className="p-2 rounded-lg bg-[#0e1833] border border-white/15 text-center">
+                        <div className="w-full h-6 rounded bg-[#25d366] mb-1 shadow-sm" />
+                        <span className="block text-[9px] font-mono text-[#25d366]">#25D366</span>
+                        <span className="block text-[8px] text-slate-300 uppercase">WhatsApp</span>
+                      </div>
+                    </div>
+
+                    {/* Typography Specimen */}
+                    <div className="pt-2 border-t border-white/10 flex items-center justify-between text-xs text-slate-300">
+                      <span className="font-sans font-semibold">Plus Jakarta Sans (Sans)</span>
+                      <span className="font-serif italic text-[#d4af37]">Playfair Display (Serif)</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>
         </section>
@@ -352,7 +599,7 @@ export default async function HomePage() {
             {projects.map((proj) => (
               <div
                 key={proj.id}
-                className="rounded-2xl bg-[#0e1833] border border-white/10 overflow-hidden flex flex-col justify-between hover:border-[#d4af37]/50 transition-all group shadow-xl"
+                className="rounded-2xl bg-[#0e1833] border border-white/10 overflow-hidden flex flex-col justify-between card-hover-effect group shadow-xl"
               >
                 <div>
                   {/* Real Homepage Screenshot Preview */}
@@ -460,33 +707,33 @@ export default async function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="p-6 rounded-xl bg-[#0e1833] border border-white/10 relative">
-              <span className="text-3xl font-extrabold text-[#d4af37]/30 absolute top-4 right-4">01</span>
-              <h3 className="text-lg font-bold text-white mb-2">1. Discover & Scope</h3>
+            <div className="p-7 rounded-2xl bg-[#0e1833] border border-white/10 relative card-hover-effect group">
+              <span className="text-4xl font-extrabold text-[#d4af37]/25 absolute top-5 right-5 group-hover:text-[#d4af37]/60 transition-colors">01</span>
+              <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#d4af37] transition-colors">1. Discover & Scope</h3>
               <p className="text-xs text-slate-300 leading-relaxed">
                 We define your primary business objective, ideal Kenyan customer profile, and required pages. You get a clear, itemized proposal before paying a single shilling.
               </p>
             </div>
 
-            <div className="p-6 rounded-xl bg-[#0e1833] border border-white/10 relative">
-              <span className="text-3xl font-extrabold text-[#d4af37]/30 absolute top-4 right-4">02</span>
-              <h3 className="text-lg font-bold text-white mb-2">2. Wireframe & Plan</h3>
+            <div className="p-7 rounded-2xl bg-[#0e1833] border border-white/10 relative card-hover-effect group">
+              <span className="text-4xl font-extrabold text-[#d4af37]/25 absolute top-5 right-5 group-hover:text-[#d4af37]/60 transition-colors">02</span>
+              <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#d4af37] transition-colors">2. Wireframe & Plan</h3>
               <p className="text-xs text-slate-300 leading-relaxed">
                 We plan the visual hierarchy and customer journey, ensuring your services are immediately understood and your contact mechanisms are front and center.
               </p>
             </div>
 
-            <div className="p-6 rounded-xl bg-[#0e1833] border border-white/10 relative">
-              <span className="text-3xl font-extrabold text-[#d4af37]/30 absolute top-4 right-4">03</span>
-              <h3 className="text-lg font-bold text-white mb-2">3. Engineered Build</h3>
+            <div className="p-7 rounded-2xl bg-[#0e1833] border border-white/10 relative card-hover-effect group">
+              <span className="text-4xl font-extrabold text-[#d4af37]/25 absolute top-5 right-5 group-hover:text-[#d4af37]/60 transition-colors">03</span>
+              <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#d4af37] transition-colors">3. Engineered Build</h3>
               <p className="text-xs text-slate-300 leading-relaxed">
                 We engineer your site using modern Next.js and Supabase. We implement mobile responsiveness, secure forms, WhatsApp linking, and database persistence.
               </p>
             </div>
 
-            <div className="p-6 rounded-xl bg-[#0e1833] border border-white/10 relative">
-              <span className="text-3xl font-extrabold text-[#d4af37]/30 absolute top-4 right-4">04</span>
-              <h3 className="text-lg font-bold text-white mb-2">4. Launch & Handover</h3>
+            <div className="p-7 rounded-2xl bg-[#0e1833] border border-white/10 relative card-hover-effect group">
+              <span className="text-4xl font-extrabold text-[#d4af37]/25 absolute top-5 right-5 group-hover:text-[#d4af37]/60 transition-colors">04</span>
+              <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#d4af37] transition-colors">4. Launch & Handover</h3>
               <p className="text-xs text-slate-300 leading-relaxed">
                 We map your domain (.co.ke or .com), test across real mobile devices, train you on your CMS dashboard, and hand over 100% of your source code and assets.
               </p>
