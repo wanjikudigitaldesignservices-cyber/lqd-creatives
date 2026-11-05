@@ -50,27 +50,38 @@ export default async function HomePage() {
 
   return (
     <div className="flex flex-col">
-      {/* 1. HERO SECTION */}
-      <section className="relative pt-20 pb-24 md:pt-28 md:pb-32 overflow-hidden bg-gradient-to-b from-[#080e1e] via-[#0b142a] to-[#080e1e]">
-        {/* Glow Effects */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#d4af37]/8 rounded-full blur-[140px] pointer-events-none" />
+      {/* 1. HERO SECTION WITH CLEAR OFFICE STUDIO BACKGROUND */}
+      <section className="relative pt-24 pb-28 md:pt-36 md:pb-40 overflow-hidden flex items-center min-h-[620px] lg:min-h-[720px]">
+        {/* Background Image: Modern Studio Office Workspace (Clear, crisp, zero people) */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none">
+          <img
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=85"
+            alt="LQD Creatives modern digital studio workspace"
+            className="w-full h-full object-cover object-center"
+            loading="eager"
+          />
+          {/* Translucent overlay preserving image clarity while maintaining WCAG contrast */}
+          <div className="absolute inset-0 bg-[#080e1e]/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#080e1e] via-transparent to-[#080e1e]/75" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#d4af37]/10 rounded-full blur-[140px]" />
+        </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             {/* Positioning Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0e1833] border border-[#d4af37]/30 text-xs font-semibold text-[#d4af37]">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#080e1e]/80 backdrop-blur-md border border-[#d4af37]/40 text-xs font-semibold text-[#d4af37] shadow-lg">
               <span className="w-2 h-2 rounded-full bg-[#d4af37]" />
               Kenyan SME Web Design & Development Practice
             </div>
 
             {/* Outcome-led Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12] drop-shadow-md">
               Websites that help Kenyan businesses earn trust and{" "}
               <span className="text-[#d4af37]">generate qualified enquiries.</span>
             </h1>
 
             {/* Concise Supporting Copy */}
-            <p className="text-lg sm:text-xl text-slate-300 leading-relaxed font-normal max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-slate-200 leading-relaxed font-normal max-w-2xl mx-auto drop-shadow-sm">
               We build fast, mobile-friendly websites for growing Kenyan enterprises. Clear service presentations that make it effortless for customers to understand your value and reach out.
             </p>
 
@@ -78,52 +89,30 @@ export default async function HomePage() {
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/contact"
-                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#d4af37] text-[#080e1e] font-bold text-base hover:bg-[#e6c86e] transition-all flex items-center justify-center gap-2 shadow-xl shadow-[#d4af37]/15"
+                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#d4af37] text-[#080e1e] font-bold text-base hover:bg-[#e6c86e] transition-all flex items-center justify-center gap-2 shadow-xl shadow-[#d4af37]/20"
               >
                 <span>Discuss Your Website</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/work"
-                className="w-full sm:w-auto px-7 py-4 rounded-xl bg-[#0e1833] border border-white/15 text-slate-200 font-semibold text-base hover:bg-white/5 hover:border-white/30 transition-all flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-7 py-4 rounded-xl bg-[#080e1e]/85 backdrop-blur-md border border-white/20 text-slate-100 font-semibold text-base hover:bg-white/10 hover:border-white/40 transition-all flex items-center justify-center gap-2 shadow-lg"
               >
                 <span>View Our Work</span>
               </Link>
             </div>
 
             {/* Honesty note */}
-            <div className="pt-3 flex items-center justify-center gap-6 text-xs text-slate-400">
-              <span className="flex items-center gap-1.5">
+            <div className="pt-4 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-slate-200">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#080e1e]/75 backdrop-blur-md border border-white/15">
                 <CheckCircle className="w-3.5 h-3.5 text-[#25d366]" /> 100% Code & Domain Ownership
               </span>
-              <span className="flex items-center gap-1.5">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#080e1e]/75 backdrop-blur-md border border-white/15">
                 <CheckCircle className="w-3.5 h-3.5 text-[#25d366]" /> Built Mobile-First for Kenya
               </span>
-              <span className="hidden sm:flex items-center gap-1.5">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#080e1e]/75 backdrop-blur-md border border-white/15">
                 <CheckCircle className="w-3.5 h-3.5 text-[#25d366]" /> Direct WhatsApp Coordination
               </span>
-            </div>
-          </div>
-
-          {/* Hero Studio Office Showcase (Clean, modern aesthetic, zero people) */}
-          <div className="mt-12 sm:mt-16 relative max-w-5xl mx-auto">
-            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-[#d4af37]/10 group">
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080e1e] via-transparent to-transparent z-10 opacity-70" />
-              <img
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80"
-                alt="Modern digital design studio workspace in Nairobi"
-                className="w-full h-[280px] sm:h-[420px] lg:h-[480px] object-cover object-center transform group-hover:scale-[1.02] transition-transform duration-700"
-                loading="eager"
-              />
-              <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 z-20 flex flex-wrap items-center gap-2 sm:gap-3">
-                <span className="px-3.5 py-1.5 rounded-full bg-[#080e1e]/90 border border-white/15 text-[11px] font-semibold text-white backdrop-blur-md flex items-center gap-2 shadow-lg">
-                  <span className="w-2 h-2 rounded-full bg-[#25d366]" />
-                  LQD Creatives Studio • Nairobi
-                </span>
-                <span className="px-3.5 py-1.5 rounded-full bg-[#080e1e]/80 border border-[#d4af37]/30 text-[11px] font-semibold text-[#d4af37] backdrop-blur-md hidden sm:inline-flex">
-                  Dedicated Web Engineering & Digital Design
-                </span>
-              </div>
             </div>
           </div>
         </div>
