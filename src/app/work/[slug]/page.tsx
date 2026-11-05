@@ -97,6 +97,41 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           </div>
         </div>
 
+        {/* Real Homepage Screenshot in Browser Mockup */}
+        {currentProject.gallery && currentProject.gallery.length > 0 && (
+          <div className="rounded-2xl overflow-hidden border border-white/15 bg-slate-950 shadow-2xl space-y-0">
+            <div className="px-4 py-3 bg-[#0e1833] border-b border-white/10 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                <span className="text-xs text-slate-400 font-mono ml-2">
+                  {currentProject.live_url?.replace(/^https?:\/\//, '') || currentProject.slug}
+                </span>
+              </div>
+              {currentProject.live_url && (
+                <a
+                  href={currentProject.live_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#d4af37] text-[#080e1e] font-bold text-xs hover:bg-[#e6c86e] transition-colors shadow-md"
+                >
+                  <span>Launch Live Platform</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              )}
+            </div>
+            <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
+              <img
+                src={currentProject.gallery[0]}
+                alt={`${currentProject.title} full homepage screenshot`}
+                className="w-full h-full object-cover object-top"
+                loading="eager"
+              />
+            </div>
+          </div>
+        )}
+
         {/* Challenge vs Solution Architecture */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="p-8 rounded-2xl bg-[#0e1833] border border-white/10 space-y-3">

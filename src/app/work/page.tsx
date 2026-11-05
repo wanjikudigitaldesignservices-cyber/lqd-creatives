@@ -40,57 +40,74 @@ export default async function WorkPage() {
           {projectList.map((proj) => (
             <div
               key={proj.id}
-              className="rounded-2xl bg-[#0e1833] border border-white/10 overflow-hidden flex flex-col justify-between hover:border-[#d4af37]/40 transition-all group"
+              className="rounded-2xl bg-[#0e1833] border border-white/10 overflow-hidden flex flex-col justify-between hover:border-[#d4af37]/50 transition-all group shadow-xl"
             >
-              <div className="p-8 space-y-5">
-                <div className="flex items-center justify-between">
-                  <span className="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-amber-500/10 text-amber-300 border border-amber-500/30">
-                    {proj.project_type === "concept" ? "Concept Prototype" : "Client Project"}
-                  </span>
-                  <span className="text-xs text-slate-500 uppercase font-medium">
-                    {proj.category.replace("_", " ")}
-                  </span>
-                </div>
+              <div>
+                {/* Real Homepage Screenshot Preview */}
+                {proj.gallery && proj.gallery.length > 0 && (
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950 border-b border-white/10">
+                    <img
+                      src={proj.gallery[0]}
+                      alt={`${proj.title} homepage preview`}
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0e1833] via-transparent to-transparent opacity-50" />
+                    {proj.live_url && (
+                      <a
+                        href={proj.live_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute top-3 right-3 px-3 py-1.5 rounded-lg bg-[#080e1e]/85 backdrop-blur-md border border-white/20 text-[11px] font-semibold text-[#d4af37] hover:bg-[#d4af37] hover:text-[#080e1e] transition-all flex items-center gap-1.5 shadow-lg"
+                      >
+                        <span>Live Site</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    )}
+                  </div>
+                )}
 
-                <h2 className="text-2xl font-bold text-white group-hover:text-[#d4af37] transition-colors">
-                  {proj.title}
-                </h2>
-
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  {proj.summary}
-                </p>
-
-                <div className="space-y-2 pt-2">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                    The Challenge:
-                  </span>
-                  <p className="text-xs text-slate-300 line-clamp-2">
-                    {proj.challenge}
-                  </p>
-                </div>
-
-                <div className="space-y-2">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#d4af37]">
-                    The Solution:
-                  </span>
-                  <p className="text-xs text-slate-300 line-clamp-2">
-                    {proj.solution}
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-1.5 pt-2">
-                  {proj.technologies.map((tech, idx) => (
-                    <span
-                      key={idx}
-                      className="px-2.5 py-1 rounded-md text-[10px] font-medium bg-[#080e1e] border border-white/5 text-slate-300"
-                    >
-                      {tech}
+                <div className="p-6 sm:p-7 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
+                      {proj.project_type === "concept" ? "Concept Prototype" : "Client Project"}
                     </span>
-                  ))}
+                    <span className="text-[11px] text-slate-400 uppercase font-medium">
+                      {proj.category.replace("_", " ")}
+                    </span>
+                  </div>
+
+                  <h2 className="text-xl font-bold text-white group-hover:text-[#d4af37] transition-colors leading-snug">
+                    {proj.title}
+                  </h2>
+
+                  <p className="text-xs text-slate-300 leading-relaxed line-clamp-2">
+                    {proj.summary}
+                  </p>
+
+                  <div className="space-y-1.5 pt-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                      Solution:
+                    </span>
+                    <p className="text-xs text-slate-300 line-clamp-2">
+                      {proj.solution}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {proj.technologies.slice(0, 4).map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2 py-0.5 rounded text-[10px] font-medium bg-[#080e1e] border border-white/5 text-slate-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
 
-              <div className="p-8 pt-0 border-t border-white/5 mt-4 flex items-center justify-between">
+              <div className="p-6 sm:p-7 pt-0 border-t border-white/5 mt-2 flex items-center justify-between">
                 <Link
                   href={`/work/${proj.slug}`}
                   className="text-xs font-semibold text-[#d4af37] hover:underline flex items-center gap-1.5"
@@ -103,9 +120,9 @@ export default async function WorkPage() {
                     href={proj.live_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-slate-400 hover:text-white flex items-center gap-1"
+                    className="text-xs text-slate-300 hover:text-white flex items-center gap-1 px-3 py-1 rounded bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
                   >
-                    <span>Inspect</span>
+                    <span>Launch</span>
                     <ExternalLink className="w-3 h-3" />
                   </a>
                 )}

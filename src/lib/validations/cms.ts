@@ -25,6 +25,7 @@ export const projectSchema = z.object({
   challenge: z.string().min(15, "Challenge description is required"),
   solution: z.string().min(15, "Solution description is required"),
   features: z.array(z.string()).default([]),
+  gallery: z.array(z.string()).default([]),
   technologies: z.array(z.string()).min(1, "At least one technology is required"),
   live_url: z.string().url("Must be a valid URL").optional().nullable().or(z.literal("")),
   published: z.boolean().default(true),

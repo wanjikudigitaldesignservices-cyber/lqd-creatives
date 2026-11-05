@@ -28,6 +28,7 @@ export function ProjectsClient({ initialProjects, isAdmin }: ProjectsClientProps
   const [featuresText, setFeaturesText] = useState("");
   const [techText, setTechText] = useState("");
   const [liveUrl, setLiveUrl] = useState("");
+  const [galleryImage, setGalleryImage] = useState("");
   const [published, setPublished] = useState(true);
   const [displayOrder, setDisplayOrder] = useState(0);
 
@@ -39,14 +40,15 @@ export function ProjectsClient({ initialProjects, isAdmin }: ProjectsClientProps
     setTitle("");
     setSlug("");
     setCategory("web_platform");
-    setProjectType("concept");
-    setClientName("Concept Prototype");
+    setProjectType("client");
+    setClientName("Client Project");
     setSummary("");
     setChallenge("");
     setSolution("");
     setFeaturesText("");
-    setTechText("Next.js, TypeScript, Tailwind CSS, Supabase");
+    setTechText("Next.js, TypeScript, Tailwind CSS, Vercel");
     setLiveUrl("");
+    setGalleryImage("");
     setPublished(true);
     setDisplayOrder(projects.length + 1);
     setIsModalOpen(true);
@@ -66,6 +68,7 @@ export function ProjectsClient({ initialProjects, isAdmin }: ProjectsClientProps
     setFeaturesText((project.features || []).join("\n"));
     setTechText((project.technologies || []).join(", "));
     setLiveUrl(project.live_url || "");
+    setGalleryImage(project.gallery?.[0] || "");
     setPublished(project.published);
     setDisplayOrder(project.display_order);
     setIsModalOpen(true);
@@ -94,6 +97,10 @@ export function ProjectsClient({ initialProjects, isAdmin }: ProjectsClientProps
       .map((t) => t.trim())
       .filter((t) => t.length > 0);
 
+    const gallery = galleryImage.trim() 
+      ? [galleryImage.trim()] 
+      : (editingProject?.gallery || []);
+
     const payload = {
       title,
       slug,
@@ -104,6 +111,7 @@ export function ProjectsClient({ initialProjects, isAdmin }: ProjectsClientProps
       challenge,
       solution,
       features,
+      gallery,
       technologies,
       live_url: liveUrl || null,
       published,
@@ -150,11 +158,20 @@ export function ProjectsClient({ initialProjects, isAdmin }: ProjectsClientProps
         {projects.map((proj) => (
           <div
             key={proj.id}
-            className="p-6 rounded-2xl bg-[#0e1833] border border-white/10 flex flex-col justify-between space-y-4"
+            className="rounded-2xl bg-[#0e1833] border border-white/10 overflow-hidden flex flex-col justify-between"
           >
-            <div className="space-y-2">
+            {proj.gallery && proj.gallery.length > 0 && (
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950 border-b border-white/10">
+                <img
+                  src={proj.gallery[0]}
+                  alt={proj.title}
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+            )}
+            <div className="p-5 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-amber-500/10 text-amber-300 border border-amber-500/30">
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
                   {proj.project_type === "concept" ? "Concept Prototype" : "Client Work"}
                 </span>
                 <span
@@ -166,11 +183,11 @@ export function ProjectsClient({ initialProjects, isAdmin }: ProjectsClientProps
                 </span>
               </div>
 
-              <h3 className="text-lg font-bold text-white">{proj.title}</h3>
+              <h3 className="text-base font-bold text-white">{proj.title}</h3>
               <p className="text-xs text-slate-300 line-clamp-2">{proj.summary}</p>
             </div>
 
-            <div className="pt-4 border-t border-white/5 flex items-center justify-between">
+            <div className="p-5 pt-0 border-t border-white/5 flex items-center justify-between mt-2">
               <span className="text-[11px] text-slate-400">Order: {proj.display_order}</span>
               <div className="flex items-center gap-2">
                 <button
@@ -364,6 +381,19 @@ export function ProjectsClient({ initialProjects, isAdmin }: ProjectsClientProps
                     className="w-full px-3 py-2 rounded-lg bg-[#080e1e] border border-white/10 text-white focus:outline-none"
                   />
                 </div>
+              </div>
+
+              <div>
+                <label className="block font-semibold uppercase text-slate-400 mb-1">
+                  Homepage Screenshot Asset Path
+                </label>
+                <input
+                  type="text"
+                  value={galleryImage}
+                  onChange={(e) => setGalleryImage(e.target.value)}
+                  placeholder="e.g. /projects/cavemen-premium-modern-men-s-barbershop-groom.jpg"
+                  className="w-full px-3 py-2 rounded-lg bg-[#080e1e] border border-white/10 text-white focus:outline-none"
+                />
               </div>
 
               <div className="flex items-center gap-6 pt-2">
